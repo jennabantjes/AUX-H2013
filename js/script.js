@@ -1,4 +1,5 @@
-var friends = {
+(function (){
+  var friends = {
 
   "addressBook" : [
     {
@@ -20,20 +21,23 @@ var friends = {
   ]
 }
 
-var object = friends.addressBook,
-    friendsCount = object.length,
-    target = document.getElementsByTagName("body")[0],
-    i;
+  var object = friends.addressBook,
+      friendsCount = object.length,
+      target = document.getElementsByTagName("body")[0],
+      i;
 
-    if(friendsCount > 0) {
-      for (i = 0; i < friendsCount; i = i + 1) {
-        var item = object[i],
-            name = item.name,
-            email = item.email;
+      if(friendsCount > 0) {
+        for (i = 0; i < friendsCount; i = i + 1) {
+          var item = object[i],
+              name = item.name,
+              email = item.email;
 
-        target.innerHTML += '<p><a href="mailto'+ email +'">' + name + '</a></p>';
+          target.innerHTML += '<p><a href="mailto'+ email +'">' + name + '</a></p>';
+        }
       }
-    }
+}());
+
+
 /* var adr = {
 
   getAllContacts : function(){
