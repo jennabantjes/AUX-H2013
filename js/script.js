@@ -1,5 +1,7 @@
 function getHTTPObject() {
 
+  "use strict";
+
   var xhr;
 
   if (window.XMLHttpRequest) {
@@ -15,9 +17,13 @@ function getHTTPObject() {
   return xhr;
 }
 
-function ajaxCall(dataUrl, callback) {
+function ajaxCall(dataUrl, outputElement, callback) {
+
+  "use strict";
 
   var request = getHTTPObject();
+
+  outputElement.innerHTML = "Loading...";
 
   request.onreadystatechange = function() {
 
@@ -31,14 +37,16 @@ function ajaxCall(dataUrl, callback) {
 
       }
     }
-  }
+  };
 
-  request.open("GET", "dataUrl", true)
+  request.open("GET", dataUrl, true);
   request.send(null);
 
 }
 
 (function (){
+
+  "use strict";
 
   var searchForm = document.getElementById("search-form"),
       searchField = document.getElementById("q"),

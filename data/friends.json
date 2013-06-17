@@ -2,83 +2,83 @@
   "addressBook" : [
     {
       "name": "Ashley",
-      "email": "ashley@example.com",
+      "email": "ashley@example.com"
     },
     {
       "name": "Becca",
-      "email": "becca@example.com",
+      "email": "becca@example.com"
     },
     {
       "name": "Chad",
-      "email": "chad@example.com",
+      "email": "chad@example.com"
     },
     {
       "name": "Dan O",
-      "email": "dano@example.com",
+      "email": "dano@example.com"
     },
     {
       "name": "Eve",
-      "email": "eve@example.com",
+      "email": "eve@example.com"
     },
     {
       "name": "Francesca",
-      "email": "francesca@example.com",
+      "email": "francesca@example.com"
     },
     {
       "name": "Gary",
-      "email": "gary@example.com",
+      "email": "gary@example.com"
     },
     {
       "name": "Holly",
-      "email": "holly@example.com",
+      "email": "holly@example.com"
     },
     {
       "name": "Ines",
-      "email": "ines@example.com",
+      "email": "ines@example.com"
     },
     {
       "name": "Josh",
-      "email": "josh@example.com",
+      "email": "josh@example.com"
     },
     {
       "name": "Kyle",
-      "email": "kyle@example.com",
+      "email": "kyle@example.com"
     },
     {
       "name": "Lauren",
-      "email": "lauren@example.com",
+      "email": "lauren@example.com"
     },
     {
       "name": "Mike",
-      "email": "mike@example.com",
+      "email": "mike@example.com"
     },
     {
       "name": "Nadia",
-      "email": "nadia@example.com",
+      "email": "nadia@example.com"
     },
     {
       "name": "Orion",
-      "email": "orion@example.com",
+      "email": "orion@example.com"
     },
     {
       "name": "Peyton",
-      "email": "peyton@example.com",
+      "email": "peyton@example.com"
     },
     {
       "name": "Quincy",
-      "email": "quincy@example.com",
+      "email": "quincy@example.com"
     },
     {
       "name": "Rachel",
-      "email": "rachel@example.com",
+      "email": "rachel@example.com"
     },
     {
       "name": "Simon",
-      "email": "simon@example.com",
+      "email": "simon@example.com"
     },
     {
       "name": "Teri",
-      "email": "teri@example.com",
+      "email": "teri@example.com"
     }
   ]
 }
