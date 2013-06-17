@@ -3,25 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Address Book Example</title>
+    <link rel="stylesheet" href="css/styles.css">
   </head>
 
   <body>
-    <header role="banner">
-      <h1>Address Book</h1>
-    </header>
+    <div class="wrapper">
+      <header role="banner">
+        <h1>Address Book</h1>
+      </header>
 
-    <form role="form" action="" method="get" id="search-form">
-      <div>
-        <label for="q">Search Address Book</label>
-        <input type="search" id="q" name="q" required placeholder="Search for friend">
-      </div>
+      <form role="form" action="" method="get" id="search-form">
+        <div>
+          <label for="q">Search Address Book</label>
+          <input type="search" id="q" name="q" required placeholder="Search for friend">
+        </div>
 
-      <div>
-        <button type="button" id="get-all">See All Friends</button>
-      </div>
-    </form>
+        <div>
+          <button type="button" id="get-all">See All Friends</button>
+        </div>
+      </form>
 
-    <div id="output" aria-atomic="true" aria-live="polite"></div>
+      <div id="output" aria-atomic="true" aria-live="polite"></div>
+    </div>
 
     <script src="js/script.js"></script>
 
