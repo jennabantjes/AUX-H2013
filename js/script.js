@@ -79,7 +79,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
 
               if(isItFound !== -1) {
 
-                target.innerHTML += '<p> <a href="mailto:' + obj.email + '">'+ obj.name +'</a></p>'
+                target.innerHTML += '<a href="mailto:' + obj.email + '"><p>'+ obj.name +'</p></a>'
   ;
           }
         }
@@ -93,7 +93,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
 
       ajaxCall('data/friends.json', output, function (data) {
 
-        var addressBook = data.addressBook
+        var addressBook = data.addressBook,
             count = addressBook.length,
             i;
 
@@ -105,12 +105,12 @@ function ajaxCall(dataUrl, outputElement, callback) {
 
                 var obj = addressBook[i];
 
-                target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name +'</a></p>';
+                target.innerHTML += '<a href="mailto:' + obj.email + '"><p>' + obj.name +'</p></a>';
               }
             }
       });
     },
-  }
+  };
 
   searchField.addEventListener("keyup", address.search, false);
 
