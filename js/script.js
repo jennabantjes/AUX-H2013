@@ -1,120 +1,104 @@
-(function (){
+function getHTTPObject() {
 
-  var friends = {
-  "addressBook" : [
-    {
-      "name": "Ashley",
-      "email": "ashley@example.com",
-    },
-    {
-      "name": "Becca",
-      "email": "becca@example.com",
-    },
-    {
-      "name": "Chad",
-      "email": "chad@example.com",
-    },
-    {
-      "name": "Dan O",
-      "email": "dano@example.com",
-    },
-    {
-      "name": "Eve",
-      "email": "eve@example.com",
-    },
-    {
-      "name": "Francesca",
-      "email": "francesca@example.com",
-    },
-    {
-      "name": "Gary",
-      "email": "gary@example.com",
-    },
-    {
-      "name": "Holly",
-      "email": "holly@example.com",
-    },
-    {
-      "name": "Ines",
-      "email": "ines@example.com",
-    },
-    {
-      "name": "Josh",
-      "email": "josh@example.com",
-    },
-    {
-      "name": "Kyle",
-      "email": "kyle@example.com",
-    },
-    {
-      "name": "Lauren",
-      "email": "lauren@example.com",
-    },
-    {
-      "name": "Mike",
-      "email": "mike@example.com",
-    },
-    {
-      "name": "Nadia",
-      "email": "nadia@example.com",
-    },
-    {
-      "name": "Orion",
-      "email": "orion@example.com",
-    },
-    {
-      "name": "Peyton",
-      "email": "peyton@example.com",
-    },
-    {
-      "name": "Quincy",
-      "email": "quincy@example.com",
-    },
-    {
-      "name": "Rachel",
-      "email": "rachel@example.com",
-    },
-    {
-      "name": "Simon",
-      "email": "simon@example.com",
-    },
-    {
-      "name": "Teri",
-      "email": "teri@example.com",
-    }
-  ]
+  var xhr;
+
+  if (window.XMLHttpRequest) {
+
+    xhr = new XMLHttpRequest();
+
+  } else if (window.ActiveXObject) {
+
+    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+
+  }
+
+  return xhr;
 }
 
-var searchForm = document.getElementById("search-form"),
-    searchField = document.getElementById("q"),
-    count = friends.addressBook.length,
-    target = document.getElementById("output");
+function ajaxCall(dataUrl, callback) {
 
-var address = {
+  var request = getHTTPObject();
 
-  search : function(event){
+  request.onreadystatechange = function() {
 
-    var searchValue = searchField.value,
-        i;
+    if ( request.readyState === 4 && request.status === 200 ) {
 
-    event.preventDefault();
+      var friends = JSON.parse(request.responseText);
 
-    target.innerHTML = "";
+      if(typeof callback === "function"){
 
-    if(count > 0 && searchValue !== "") {
+        callback(friends);
 
-      for(i = 0; i < count; i = i + 1) {
-
-        var obj = friends.addressBook[i],
-            isItFound = obj.name.indexOf(searchValue);
-
-            if(isItFound !== -1) {
-
-              target.innerHTML += '<p> <a href="mailto:' + obj.email + '">'+ obj.name +'</a></p>'
-;
-        }
       }
     }
+  }
+
+  request.open("GET", "dataUrl", true)
+  request.send(null);
+
+}
+
+(function (){
+
+  var searchForm = document.getElementById("search-form"),
+      searchField = document.getElementById("q"),
+      target = document.getElementById("output");
+
+  var address = {
+
+    search : function(event){
+
+      var output = document.getElementById("output");
+
+      ajaxCall('data/friends.json', output, function (data) {
+
+      var searchValue = searchField.value,
+          addressBook = data.addressBook,
+          count = addressBook.length,
+          i;
+
+      event.preventDefault();
+
+      target.innerHTML = "";
+
+      if(count > 0 && searchValue !== "") {
+
+        for(i = 0; i < count; i = i + 1) {
+
+          var obj = addressBook[i],
+              isItFound = obj.name.indexOf(searchValue);
+
+              if(isItFound !== -1) {
+
+                target.innerHTML += '<p> <a href="mailto:' + obj.email + '">'+ obj.name +'</a></p>'
+  ;
+          }
+        }
+      }
+    });
+  },
+  getAllContacts : function () {
+
+    var output = document.getElementById("output");
+
+    ajaxCall('data/friends.json', output, function (data) {
+
+      var addressBook = data.addressBook
+          count = addressBook.length,
+          i;
+
+          target.innerHTML = "";
+
+          if(count > 0) {
+
+            for(i =0; i < count; i = i + 1) {
+
+              var obj = addressBook[i];
+
+              target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name +'</a></p>';
+            }
+          }
+    })
   }
 }
 
