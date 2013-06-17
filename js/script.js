@@ -42,6 +42,7 @@ function ajaxCall(dataUrl, callback) {
 
   var searchForm = document.getElementById("search-form"),
       searchField = document.getElementById("q"),
+      getAllButton = document.getElementById("get-all"),
       target = document.getElementById("output");
 
   var address = {
@@ -77,31 +78,34 @@ function ajaxCall(dataUrl, callback) {
       }
     });
   },
-  getAllContacts : function () {
 
-    var output = document.getElementById("output");
+    getAllContacts : function () {
 
-    ajaxCall('data/friends.json', output, function (data) {
+      var output = document.getElementById("output");
 
-      var addressBook = data.addressBook
-          count = addressBook.length,
-          i;
+      ajaxCall('data/friends.json', output, function (data) {
 
-          target.innerHTML = "";
+        var addressBook = data.addressBook
+            count = addressBook.length,
+            i;
 
-          if(count > 0) {
+            target.innerHTML = "";
 
-            for(i =0; i < count; i = i + 1) {
+            if(count > 0) {
 
-              var obj = addressBook[i];
+              for(i =0; i < count; i = i + 1) {
 
-              target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name +'</a></p>';
+                var obj = addressBook[i];
+
+                target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name +'</a></p>';
+              }
             }
-          }
-    })
+      });
+    },
   }
-}
 
-searchField.addEventListener("keyup", address.search, false);
+  searchField.addEventListener("keyup", address.search, false);
 
-}());
+  getAllButton.addEventListener("click", address.getAllContacts, false);
+
+})();
